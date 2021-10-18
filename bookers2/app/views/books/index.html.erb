@@ -1,0 +1,39 @@
+<h2>New book</h2>
+<%= form_with model:@book, local:true do |f| %>
+
+<div class="form-group">
+ <labl for="book_title">Title</label>
+ <%= f.text_field :title %>
+</div>
+
+<div class ="form-group">
+ <label for ="book_opinion">Opinion</label>
+ <%= f.text_area :opinion %>
+</div>
+
+<%= f.submit'Create Box' %>
+
+<% end %> 
+
+<div class="books-body">
+<h2>Books</h2>
+<table>
+<thead>
+ <tr>
+  <th></th>
+  <th>Title</th>
+  <th>Opinion</th>
+  <th colspan="3"></th>
+ </tr>
+</thead>
+ <tbody>
+<% @books.each do |book| %>
+<tr>
+ <td>画像</td>
+ <td><%= link_to book.title, book_path(book.id) %></td>
+ <td><%= book.opinion %></td>
+</tr>
+<% end %>
+  </tbody>
+ </table>
+</div>
